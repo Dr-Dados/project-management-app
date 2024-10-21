@@ -92,7 +92,6 @@ function App() {
       };
       return {
         ...prevState,
-        selectedProjectId: undefined,
         tasks: [newTask, ...prevState.tasks],
       };
     });
@@ -101,6 +100,10 @@ function App() {
   console.log("projectState", projectState);
   const selectedProject = projectState.projects.find(
     (project) => project.id === projectState.selectedProjectId
+  );
+
+  let selectedTasks = projectState.tasks.filter(
+    (task) => task.idProject === projectState.selectedProjectId
   );
   let content;
   if (projectState.selectedProjectId === null) {
@@ -119,6 +122,7 @@ function App() {
         onDelete={handleDeleteProject}
         onAddTask={handleAddingTask}
         onDeleteTask={handleDeleteTask}
+        tasks={selectedTasks}
       />
     );
   }
