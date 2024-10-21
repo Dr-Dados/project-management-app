@@ -1,7 +1,7 @@
 import React from "react";
 
-const SelectedProject = ({ project }) => {
-    console.log(project)
+const SelectedProject = ({ project, onDelete }) => {
+  console.log(project);
   const formattedDate = new Date(project.dueDate).toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",
@@ -14,7 +14,10 @@ const SelectedProject = ({ project }) => {
           <h1 className="mb-2 text-3xl font-bold text-stone-600">
             {project.title}
           </h1>
-          <button className="text-stone-600 hover:text-stone-950">
+          <button
+            className="text-stone-600 hover:text-stone-950"
+            onClick={onDelete}
+          >
             Delete
           </button>
         </div>
